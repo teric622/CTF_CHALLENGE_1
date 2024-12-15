@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hidden-word {
+            color: white;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .video-container {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="funny_meme_girl.png" alt="Italian Trulli">
+    <h1>Welcome to the CTF Challenge!</h1>
+    <p>Your task is to find the <span class="hidden-word">hidden</span> flag. Good luck!</p>
+    
+    <div class="form-container">
+        <p>Enter the flag below to see if you're correct:</p>
+        <form id="flagForm">
+            <input type="text" id="flagInput" placeholder="Enter the flag here">
+            <button type="button" onclick="checkFlag()">Submit</button>
+        </form>
+        <p id="resultMessage"></p>
+<!-- Hint: Not everything is as it seems. Try exploring the page carefully. Maybe there is a hidden button, some hidden text, or even a missing URL. Who knows? -->
+
+    </div>
+    
+    <div class="video-container" id="videoContainer">
+        <h2>Congratulations!</h2>
+        <iframe width="560" height="315" 
+                src= "https://player.vimeo.com/video/125881758",
+                title="You succeeded!" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+    </div>
+
+    <script>
+        console.log("It is not where you think it is but it is exactly where you hide something.")
+        console.log("Maybe tis MD5 hash means something? 7af4f3b8 ")
+        // console.log("You’re one URL away")
+        function checkFlag() {
+            const correctFlag = "CTF{etm_welcome_to_my_first_broken_access_control_flag_good_job}";
+            const userInput = document.getElementById("flagInput").value.trim();
+
+            if (userInput === correctFlag) {
+                document.getElementById("resultMessage").innerHTML = "Correct flag!";
+                document.getElementById("videoContainer").style.display = "block";
+            } else {
+                document.getElementById("resultMessage").innerHTML = "Incorrect flag. Try again!";
+                document.getElementById("resultMessage").style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
